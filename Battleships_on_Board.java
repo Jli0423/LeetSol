@@ -1,4 +1,4 @@
-//Much faster solution: By defining the pieces that are either top, or left as the main piece, all that's needed is to check if another piece has a top or left piece
+//Much shorter solution: By defining the pieces that are either top, or left as the main piece, all that's needed is to check if another piece has a top or left piece
 class Solution {
     public int countBattleships(char[][] board) {
         int count = 0;
