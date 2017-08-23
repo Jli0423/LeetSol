@@ -9,33 +9,25 @@
  */
 class Solution {
     public TreeNode constructMaximumBinaryTree(int[] nums) {
-        int max = Arrays.stream(nums).max().getAsInt();
-        int index = 0;
-        for(int i = 0; i < nums.length; i++){
-            if(nums[i] == max){
-                index = i;
-                break;
+        if(nums.length == 0){
+            return null;
+        }
+        return construct(nums, 0, nums.length - 1);
+    }
+    public TreeNode construct(int[] nums, int startTrack, int endTrack){
+        if(startTrack > endTrack){
+            return null;
+        }
+        int maxIndex = startTrack;
+        for(int i = maxIndex; i <= endTrack; i++){
+            if(nums[i] > nums[maxIndex]){
+                maxIndex = i;
             }
-        }
-        System.out.println(max + " " + index);
-        TreeNode ans = new TreeNode(max);
-        ans.left = left(index, nums, ans.left);
-        ans.right = right(index, nums, ans.left);
+        }   
+        TreeNode ans = new TreeNode(nums[maxIndex]);
+        
+        ans.left = construct(nums, startTrack, maxIndex - 1);
+        ans.right = construct(nums, maxIndex + 1, endTrack);
         return ans;
-    }
-
-    public TreeNode left(int index, int[] nums, TreeNode t){
-        if(index < 0){
-            return t;
-        }
-        t.val = nums[index];
-        return left(index - 1, nums, t.left);
-    }
-    public TreeNode right(int index, int[] nums, TreeNode t){
-        if(index > nums.length - 1){
-            return t;
-        }
-        t.val = nums[index];
-        return right(index + 1, nums, t.right);
     }
 }
