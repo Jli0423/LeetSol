@@ -1,3 +1,21 @@
+// Proper O(n) Solution: Using hashmap
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] ansArr = new int[2];
+        HashMap<Integer, Integer> ans = new HashMap<>();
+        for(int i = 0; i < nums.length; i++){
+            if(ans.containsKey(nums[i])){
+                ansArr[0] = ans.get(nums[i]);
+                ansArr[1] = i;
+            }else{
+                ans.put(target - nums[i], i);
+            }
+        }
+        return ansArr;
+    }
+}
+
+// Solution 2: slow
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int[] ans = new int[2];
@@ -21,7 +39,7 @@ class Solution {
 }
 
 
-// Solution 2
+// Solution 3: super slow lol
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         List<Integer> num = Arrays.stream(nums).boxed().collect(Collectors.toList());
