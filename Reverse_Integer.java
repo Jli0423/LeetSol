@@ -1,3 +1,4 @@
+// Slow solution
 class Solution {
     public int reverse(int x) {
         boolean val = true;
@@ -7,11 +8,11 @@ class Solution {
             num = num.substring(1);
         }
         String numReverse = new StringBuilder(num).reverse().toString();
-        long value = Integer.parseInt(numReverse);
+        long value = Long.parseLong(numReverse);
         if(!val){
             value = value * (-1);
         }
-        if(value != (int)value){
+        if(value > Integer.MAX_VALUE || value < Integer.MIN_VALUE){
             return 0;
         }
         return (int) value;
