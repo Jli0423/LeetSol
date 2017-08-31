@@ -21,3 +21,15 @@ class Solution {
         return index + 1;
     }
 }
+
+// The for loop isn't even needed, bigger bait :\
+class Solution {
+    public int findLUSlength(String a, String b) {
+        if(a.equals(b)){
+            return -1;
+        }
+        else{
+            return Math.max(a.length(), b.length());
+        }
+    }
+}
