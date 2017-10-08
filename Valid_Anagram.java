@@ -8,7 +8,11 @@ class Solution {
             list[(int)s.charAt(i) - 97]++;
         }
         for(int i = 0; i < t.length(); i++){
+<<<<<<< HEAD
             list[(int)t.charAt(i) - 97]--;
+=======
+            list[(int)s.charAt(i) - 97]--;
+>>>>>>> dfe4d7f900a0570bff11feb61bdc402a70114224
         }
 
         for(int i = 0; i < list.length; i++){
