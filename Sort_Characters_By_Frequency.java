@@ -1,4 +1,41 @@
-// Attempt 1: Way to fucking slow
+// Attempt 2: Top 60% with semi bucket sort
+class Solution {
+    public String frequencySort(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        int amountLetters = 0;
+        for(int i = 0; i < s.length(); i++){
+            if(map.containsKey(s.charAt(i))){
+                map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
+            }else{
+                amountLetters++;
+                map.put(s.charAt(i), 1);
+            }
+        }
+        String[] list = new String[s.length() + 1];
+        for(char key : map.keySet()){
+            if(list[map.get(key)] == null){
+                list[map.get(key)] = Character.toString(key);
+            }else{
+                list[map.get(key)] += key;
+            }
+        }
+        
+        String ans = "";
+        for(int i = list.length - 1; i >= 0; i--){
+            if(list[i] != null){
+                for(int count = 0; count < list[i].length(); count++){
+                    char[] repeat = new char[i];
+                    Arrays.fill(repeat, list[i].charAt(count));
+                    ans += new String(repeat);
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+
+// Attempt 1: Way too fucking slow
 class Solution {
     public String frequencySort(String s) {
         if(s.length < 3){
