@@ -16,3 +16,19 @@ var numJewelsInStones = function(J, S) {
 
   return searchOne > searchTwo ? searchOne : searchTwo;
 };
+
+// Better solutions...
+/**
+ * @param {string} J
+ * @param {string} S
+ * @return {number}
+ */
+var numJewelsInStones = function(J, S) {
+    let x = 0;
+    for(let i = 0; i < S.length; i++) {
+        if (J.includes(S.charAt(i))) {
+            x++;
+        }
+    }
+    return x;
+};
